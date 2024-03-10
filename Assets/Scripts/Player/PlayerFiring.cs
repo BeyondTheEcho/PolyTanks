@@ -90,6 +90,11 @@ public class PlayerFiring : NetworkBehaviour
             Physics.IgnoreCollision(collider, projectile.GetComponent<Collider>());     
         }
 
+        if (projectile.TryGetComponent<DealDamageOnContact>(out DealDamageOnContact damage))
+        {
+            damage.SetOwner(OwnerClientId);
+        }
+
         if(projectile.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.velocity = rb.transform.forward * m_ProjectileSpeed;
