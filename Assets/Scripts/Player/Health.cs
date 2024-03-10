@@ -8,6 +8,9 @@ using UnityEngine;
 public class Health : NetworkBehaviour
 {
     [SerializeField] private GameObject m_UIPrefab;
+    [SerializeField] private ParticleSystem m_DamageEffectOne;
+    [SerializeField] private ParticleSystem m_DamageEffectTwo;
+    [SerializeField] private ParticleSystem m_DamageEffectThree;
     [field: SerializeField] public int m_MaxHealth { get ; private set; } = 100;
     public NetworkVariable<int> m_CurrentHealth = new NetworkVariable<int>();
 
@@ -51,10 +54,33 @@ public class Health : NetworkBehaviour
         int newHealth = m_CurrentHealth.Value + value;
         m_CurrentHealth.Value = Mathf.Clamp(newHealth, 0, m_MaxHealth);
 
+        if (IsServer)
+        {
+            // Trigger damage effects on all clients
+            TargetTriggerDamageEffectsClientRpc();
+        }
+
         if (m_CurrentHealth.Value == 0)
         {
             a_OnDie?.Invoke(this);
             m_IsDead = true;
+        }
+    }
+
+    [ClientRpc]
+    private void TargetTriggerDamageEffectsClientRpc()
+    {
+        if (m_CurrentHealth.Value >= (m_MaxHealth * 0.75))
+        {
+            m_DamageEffectOne.Play();
+        }
+        else if (m_CurrentHealth.Value >= (m_MaxHealth * 0.5))
+        {
+            m_DamageEffectTwo.Play();
+        }
+        else if (m_CurrentHealth.Value >= (m_MaxHealth * 0.25))
+        {
+            m_DamageEffectThree.Play();
         }
     }
 }
