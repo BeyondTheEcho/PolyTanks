@@ -17,8 +17,6 @@ public abstract class RepairPack : NetworkBehaviour
     protected bool m_AlreadyCollected;
     protected int m_RemainingRepairValue;
 
-    public abstract int Collect();
-
     public void SetValue(int value)
     {
         m_TotalRepairValue = value;

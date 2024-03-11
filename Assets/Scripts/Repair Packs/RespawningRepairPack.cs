@@ -12,20 +12,6 @@ public class RespawningRepairPack : RepairPack
         m_RemainingRepairValue = m_TotalRepairValue;
     }
 
-    public override int Collect()
-    {
-        if (!IsServer) 
-        {
-            Show(false);
-            return 0;
-        }
-
-        if (m_AlreadyCollected) return 0;
-
-        m_AlreadyCollected = true;
-        return m_TotalRepairValue;
-    }
-
     private void OnTriggerEnter(Collider col)
     {
         if (col.attachedRigidbody.gameObject.TryGetComponent(out Health health))
@@ -56,7 +42,7 @@ public class RespawningRepairPack : RepairPack
 
     public IEnumerator StartRepair(Health health)
     {
-        if (!IsServer) 
+        if (!IsServer)
         {
             health.m_IsRepairing = false;
             yield break;
