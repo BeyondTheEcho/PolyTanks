@@ -16,6 +16,7 @@ public class Health : NetworkBehaviour
 
     private GameObject m_UIInstance;
     private bool m_IsDead = false;
+    public bool m_IsRepairing = false;
 
     public Action<Health> a_OnDie;
 
@@ -70,17 +71,39 @@ public class Health : NetworkBehaviour
     [ClientRpc]
     private void TargetTriggerDamageEffectsClientRpc()
     {
-        if (m_CurrentHealth.Value >= (m_MaxHealth * 0.75))
+        if (m_CurrentHealth.Value <= 0)
         {
-            m_DamageEffectOne.Play();
+            m_DamageEffectOne.Stop();
+            m_DamageEffectTwo.Stop();
+            m_DamageEffectThree.Stop();
+            return;
         }
-        else if (m_CurrentHealth.Value >= (m_MaxHealth * 0.5))
+
+        if (m_CurrentHealth.Value <= (m_MaxHealth * 0.25f))
+        {
+            m_DamageEffectThree.Play();
+        }
+        else
+        {
+            m_DamageEffectThree.Stop();
+        }
+
+        if (m_CurrentHealth.Value <= (m_MaxHealth * 0.5f))
         {
             m_DamageEffectTwo.Play();
         }
-        else if (m_CurrentHealth.Value >= (m_MaxHealth * 0.25))
+        else
         {
-            m_DamageEffectThree.Play();
+            m_DamageEffectTwo.Stop();
+        }
+
+        if (m_CurrentHealth.Value <= (m_MaxHealth * 0.75f))
+        {
+            m_DamageEffectOne.Play();
+        }
+        else
+        {
+            m_DamageEffectOne.Stop();
         }
     }
 }

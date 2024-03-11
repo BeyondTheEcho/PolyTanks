@@ -2679,7 +2679,7 @@ MonoBehaviour:
   m_InputReader: {fileID: 11400000, guid: 5ab2a911dca61d74db8094c2fa77aef6, type: 2}
   m_BodyTransform: {fileID: 1128633029968242142}
   m_Rb: {fileID: 5958401021010741766}
-  m_MovementSpeed: 4
+  m_MovementSpeed: 10
   m_TurnRate: 30
 --- !u!114 &6958595656147822519
 MonoBehaviour:
@@ -2741,6 +2741,7 @@ MonoBehaviour:
   <m_MaxHealth>k__BackingField: 100
   m_CurrentHealth:
     m_InternalValue: 0
+  m_IsRepairing: 0
 --- !u!1001 &407154436881886432
 PrefabInstance:
   m_ObjectHideFlags: 0
