@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 462787048223805250, guid: 05c3f105cf34ef940bcf4bd06e9d7f2b, type: 3}
+      propertyPath: m_CollisionEffectPrefab
+      value: 
+      objectReference: {fileID: 198414929906883958, guid: 8baff3207836e304f95274c39c8d572c, type: 3}
     - target: {fileID: 1999577718196411916, guid: 05c3f105cf34ef940bcf4bd06e9d7f2b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
