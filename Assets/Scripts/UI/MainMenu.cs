@@ -1,18 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public async void StartHost()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        await HostSingleton.s_Instance.m_GameManager.StartHostAsync();
     }
 }
