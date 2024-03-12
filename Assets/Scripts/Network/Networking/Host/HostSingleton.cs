@@ -19,7 +19,7 @@ public class HostSingleton : MonoBehaviour
 
             if(instance == null)
             {
-                Debug.LogError("No ClientSingleton Found");
+                Debug.LogError("No HostSingleton Found");
                 return null;
             }
 

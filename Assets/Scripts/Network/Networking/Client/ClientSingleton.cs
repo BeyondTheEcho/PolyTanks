@@ -7,7 +7,7 @@ using UnityEngine;
 public class ClientSingleton : MonoBehaviour
 {
     private static ClientSingleton instance;
-    private ClientGameManager m_GameManager;
+    public ClientGameManager m_GameManager {get; private set;}
 
     public static ClientSingleton s_Instance
     {
@@ -32,18 +32,10 @@ public class ClientSingleton : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public async Task CreateClientAsync()
+    public async Task<bool> CreateClientAsync()
     {
         m_GameManager = new ClientGameManager();
 
-        try
-        {
-            await m_GameManager.InitAsync();
-            Debug.Log("Client initialization completed successfully.");
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError($"Client initialization failed: {ex.Message}");
-        }
+        return await m_GameManager.InitAsync();
     }
 }
