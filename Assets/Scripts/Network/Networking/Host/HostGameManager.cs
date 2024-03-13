@@ -41,7 +41,8 @@ public class HostGameManager
         }
 
         var transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-        RelayServerData relayServerData = new(m_Allocation, "udp");
+        //switch dtls to udp if people have trouble connecting
+        RelayServerData relayServerData = new(m_Allocation, "dtls");
 
         transport.SetRelayServerData(relayServerData);
 

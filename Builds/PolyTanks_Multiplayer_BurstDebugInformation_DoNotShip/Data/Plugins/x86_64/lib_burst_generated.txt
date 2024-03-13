@@ -21,6 +21,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Netcode.Components;
 --assembly-defines=Unity.Services.Core.Scheduler;
 --assembly-defines=Unity.Services.Core.Environments;
+--assembly-defines=Unity.Services.Relay;
 --assembly-defines=Unity.Services.Core.Configuration;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Collections;
@@ -40,6 +41,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Services.Core.Threading;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.2D.Animation.Runtime;
+--assembly-defines=Unity.Services.QoS;
 --assembly-defines=Unity.2D.Tilemap.Extras;
 --assembly-defines=Unity.Services.Core.Telemetry;
 --assembly-defines=Unity.Services.Multiplay.Sqp;
@@ -208,6 +210,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Netcode.Components;
 --assembly-defines=Unity.Services.Core.Scheduler;
 --assembly-defines=Unity.Services.Core.Environments;
+--assembly-defines=Unity.Services.Relay;
 --assembly-defines=Unity.Services.Core.Configuration;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Collections;
@@ -227,6 +230,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Services.Core.Threading;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.2D.Animation.Runtime;
+--assembly-defines=Unity.Services.QoS;
 --assembly-defines=Unity.2D.Tilemap.Extras;
 --assembly-defines=Unity.Services.Core.Telemetry;
 --assembly-defines=Unity.Services.Multiplay.Sqp;
@@ -397,6 +401,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Netcode.Components;
 --assembly-defines=Unity.Services.Core.Scheduler;
 --assembly-defines=Unity.Services.Core.Environments;
+--assembly-defines=Unity.Services.Relay;
 --assembly-defines=Unity.Services.Core.Configuration;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Collections;
@@ -416,6 +421,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Services.Core.Threading;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.2D.Animation.Runtime;
+--assembly-defines=Unity.Services.QoS;
 --assembly-defines=Unity.2D.Tilemap.Extras;
 --assembly-defines=Unity.Services.Core.Telemetry;
 --assembly-defines=Unity.Services.Multiplay.Sqp;
@@ -493,6 +499,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Netcode.Components;
 --assembly-defines=Unity.Services.Core.Scheduler;
 --assembly-defines=Unity.Services.Core.Environments;
+--assembly-defines=Unity.Services.Relay;
 --assembly-defines=Unity.Services.Core.Configuration;
 --assembly-defines=Unity.RenderPipelines.Core.ShaderLibrary;
 --assembly-defines=Unity.Collections;
@@ -512,6 +519,7 @@ Library: P:\Repos\PolyTanks\Temp\BurstOutput\Data\Plugins\x86_64\lib_burst_gener
 --assembly-defines=Unity.Services.Core.Threading;
 --assembly-defines=Unity.VisualScripting.Core;
 --assembly-defines=Unity.2D.Animation.Runtime;
+--assembly-defines=Unity.Services.QoS;
 --assembly-defines=Unity.2D.Tilemap.Extras;
 --assembly-defines=Unity.Services.Core.Telemetry;
 --assembly-defines=Unity.Services.Multiplay.Sqp;
