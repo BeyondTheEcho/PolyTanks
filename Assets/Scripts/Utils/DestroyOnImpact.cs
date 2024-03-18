@@ -13,10 +13,9 @@ public class DestroyOnImpact : MonoBehaviour
         {
             // Get the point of contact
             Vector3 contactPoint = col.ClosestPointOnBounds(transform.position);
-            Quaternion contactRotation = Quaternion.LookRotation(contactPoint - transform.position);
 
-            // Instantiate the effect at the contact point with the contact rotation
-            var explosion = Instantiate(m_CollisionEffectPrefab, contactPoint, contactRotation);
+            // Instantiate the effect at the contact point
+            var explosion = Instantiate(m_CollisionEffectPrefab, contactPoint, Quaternion.identity);
             explosion.Play();
 
             // Destroy the explosion object after fixed time
