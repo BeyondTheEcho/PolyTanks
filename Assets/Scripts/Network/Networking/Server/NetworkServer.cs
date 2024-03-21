@@ -7,12 +7,15 @@ using UnityEngine;
 public class NetworkServer
 {
     private NetworkManager m_NetworkManager;
+    private Dictionary<ulong, string> m_PlayerIDToAuth = new();
+    private Dictionary<string, UserData> m_PlayerIDToUserData = new();
 
     public NetworkServer(NetworkManager networkManager)
     {
         m_NetworkManager = networkManager;
 
-        networkManager.ConnectionApprovalCallback += ApprovalCheck;
+        m_NetworkManager.ConnectionApprovalCallback += ApprovalCheck;
+        m_NetworkManager.OnServerStarted += OnNetworkReady;
     }
 
     private void ApprovalCheck(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
@@ -20,9 +23,26 @@ public class NetworkServer
         string payload = System.Text.Encoding.UTF8.GetString(request.Payload);
         UserData userData = JsonUtility.FromJson<UserData>(payload);
 
-        Debug.Log(userData.m_UserName);
+        m_PlayerIDToAuth.Add(request.ClientNetworkId, userData.m_UserName);
+        m_PlayerIDToUserData.Add(userData.m_UserName, userData);
+
+        Debug.Log($"{userData.m_UserName} has joined");
 
         response.Approved = true;
         response.CreatePlayerObject = true;
+    }
+
+    private void OnNetworkReady()
+    {
+        m_NetworkManager.OnClientDisconnectCallback += OnClientDisconnect;
+    }
+
+    private void OnClientDisconnect(ulong clientID)
+    {
+        if (m_PlayerIDToAuth.TryGetValue(clientID, out string authID))
+        {
+            m_PlayerIDToAuth.Remove(clientID);
+            m_PlayerIDToUserData.Remove(authID);
+        }
     }
 }
