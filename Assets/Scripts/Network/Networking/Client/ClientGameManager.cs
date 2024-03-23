@@ -13,7 +13,7 @@ using Unity.Networking.Transport.Relay;
 using System.Text;
 using Unity.Services.Authentication;
 
-public class ClientGameManager
+public class ClientGameManager : IDisposable
 {
     private JoinAllocation m_JoinAllocation;
     private NetworkClient m_NetworkClient;
@@ -70,5 +70,10 @@ public class ClientGameManager
         NetworkManager.Singleton.NetworkConfig.ConnectionData = payloadBytes;
 
         NetworkManager.Singleton.StartClient();
+    }
+
+    public void Dispose()
+    {
+        m_NetworkClient?.Dispose();
     }
 }
