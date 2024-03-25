@@ -67,39 +67,49 @@ public class PlayerFiring : NetworkBehaviour
     {
         TriggerMuzzleFlash();
 
-        var projectile = Instantiate(m_ClientProjectilePrefab, spawnPos, Quaternion.identity);
+        // Calculate the direction of travel (normalized)
+        Vector3 direction = forward.normalized;
 
-        projectile.transform.forward = forward;
+        // Calculate the rotation to align the projectile with the direction of travel
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-        foreach(Collider collider in m_PlayerColliders)
-        {     
-            Physics.IgnoreCollision(collider, projectile.GetComponent<Collider>());     
+        var projectile = Instantiate(m_ClientProjectilePrefab, spawnPos, targetRotation);
+
+        foreach (Collider collider in m_PlayerColliders)
+        {
+            Physics.IgnoreCollision(collider, projectile.GetComponent<Collider>());
         }
 
-        if(projectile.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if (projectile.TryGetComponent(out Rigidbody rb))
         {
-            rb.velocity = rb.transform.forward * m_ProjectileSpeed;
+            rb.velocity = direction * m_ProjectileSpeed;
         }
     }
+
+
 
     [ServerRpc]
     private void PrimaryFireServerRpc(Vector3 spawnPos, Vector3 forward)
     {
-        var projectile = Instantiate(m_ServerProjectilePrefab, spawnPos, Quaternion.identity);
+        // Calculate the direction of travel (normalized)
+        Vector3 direction = forward.normalized;
 
-        projectile.transform.forward = forward;
+        // Calculate the rotation to align the projectile with the direction of travel
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        var projectile = Instantiate(m_ServerProjectilePrefab, spawnPos, targetRotation);
 
         foreach(Collider collider in m_PlayerColliders)
         {     
             Physics.IgnoreCollision(collider, projectile.GetComponent<Collider>());     
         }
 
-        if (projectile.TryGetComponent<DealDamageOnContact>(out DealDamageOnContact damage))
+        if (projectile.TryGetComponent(out DealDamageOnContact damage))
         {
             damage.SetOwner(OwnerClientId);
         }
 
-        if(projectile.TryGetComponent<Rigidbody>(out Rigidbody rb))
+        if(projectile.TryGetComponent(out Rigidbody rb))
         {
             rb.velocity = rb.transform.forward * m_ProjectileSpeed;
         }
