@@ -3039,7 +3039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 560075116
+  GlobalObjectIdHash: 3687739957
   InScenePlacedSourceGlobalObjectIdHash: 3687739957
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -3136,7 +3136,7 @@ MonoBehaviour:
   m_AimTargetTransform: {fileID: 9127036254851776532}
   m_Rb: {fileID: 5958401021010741766}
   m_MovementSpeed: 10
-  m_TankTurnRate: 30
+  m_TankTurnRate: 20
   m_CameraTurnRate: 5
   m_MinPitch: -10
   m_MaxPitch: 60
@@ -3165,6 +3165,7 @@ MonoBehaviour:
   m_BarrelRotationSpeed: 1
   m_MinBarrelPitch: -15
   m_MaxBarrelPitch: 15
+  m_PlayerCamPriority: 100
 --- !u!114 &7985575520935535612
 MonoBehaviour:
   m_ObjectHideFlags: 0
