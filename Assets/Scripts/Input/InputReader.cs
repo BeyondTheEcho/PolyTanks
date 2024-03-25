@@ -9,9 +9,12 @@ using static Controls;
 public class InputReader : ScriptableObject, IPlayerActions
 {
     public event Action<bool> a_PrimaryFire;
+    public event Action<bool> a_Aim;
+    public event Action a_EscapePressed;
     public event Action<Vector2> a_PlayerMovement;
     
-    public Vector2 m_AimPosition {get; private set;}
+    public Vector2 m_MousePosition {get; private set;}
+    public Vector2 m_MouseDelta {get; private set;}
     private Controls m_Controls;
 
     private void OnEnable()
@@ -39,6 +42,22 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        m_AimPosition = context.ReadValue<Vector2>();
+        if (context.performed) a_Aim?.Invoke(true);
+        if (context.canceled) a_Aim?.Invoke(false);
+    }
+
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        if (context.performed) a_EscapePressed?.Invoke();
+    }
+
+    public void OnMousePosition(InputAction.CallbackContext context)
+    {
+        m_MousePosition = context.ReadValue<Vector2>();
+    }
+
+    public void OnMouseDelta(InputAction.CallbackContext context)
+    {
+        m_MouseDelta = context.ReadValue<Vector2>();
     }
 }

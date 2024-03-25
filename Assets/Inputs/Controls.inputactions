@@ -24,9 +24,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Aim",
+                    "name": "MousePosition",
                     "type": "Value",
                     "id": "35067c63-5219-463f-a090-e64f7267f1e9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "e0f306e7-aa72-4f69-907f-82e5994d104b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "4c31dce4-56f6-4b64-804c-2596123a0d9a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Mouse Delta",
+                    "type": "Value",
+                    "id": "6e278b91-3481-42b1-bd23-c898d2f30e81",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -118,7 +145,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard / Mouse",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6928079-98d2-4cd4-9c94-c6e933137e7f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard / Mouse",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a1ec2f8-938f-4587-915c-c6e11bbc14e0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard / Mouse",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3558bf99-836b-4109-a17b-75146431017e",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard / Mouse",
+                    "action": "Mouse Delta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

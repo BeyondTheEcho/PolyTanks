@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class PlayerFiring : NetworkBehaviour
     [SerializeField] private ParticleSystem m_MuzzleFlash;
     [SerializeField] private InputReader m_InputReader;
     [SerializeField] private Collider[] m_PlayerColliders;
+    [SerializeField] private CinemachineImpulseSource m_RecoilImpulse;
 
     [Header("Settings")]
     [SerializeField] private float m_ProjectileSpeed;
@@ -55,6 +57,8 @@ public class PlayerFiring : NetworkBehaviour
 
         PrimaryFireServerRpc(m_ProjectileSpawnPoint.position, m_ProjectileSpawnPoint.forward);
         SpawnDummyProjectile(m_ProjectileSpawnPoint.position, m_ProjectileSpawnPoint.forward);
+
+        m_RecoilImpulse.GenerateImpulse();
 
         m_TimeSinceLastShot = Time.time;
     }

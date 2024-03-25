@@ -7,32 +7,14 @@ using UnityEngine;
 
 public class Health : NetworkBehaviour
 {
-    [SerializeField] private GameObject m_UIPrefab;
+
     [field: SerializeField] public int m_MaxHealth { get ; private set; } = 100;
     public NetworkVariable<int> m_CurrentHealth = new NetworkVariable<int>();
     public bool m_IsRepairing = false;
 
-    private GameObject m_UIInstance;
     private bool m_IsDead = false;
 
     public Action<Health> a_OnDie;
-
-    private void Start()
-    {
-        // Instantiate the UI prefab only on the client that owns this object
-        if (IsOwner)
-        {
-            m_UIInstance = Instantiate(m_UIPrefab);
-            DontDestroyOnLoad(m_UIInstance);
-
-            if(m_UIInstance.TryGetComponent<HealthDisplay>(out HealthDisplay healthDisplay))
-            {
-                Debug.Log("Found Display");
-                healthDisplay.SetHealth(this);
-                return;
-            }
-        }
-    }
 
     public override void OnNetworkSpawn()
     {
