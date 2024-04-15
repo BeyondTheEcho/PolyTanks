@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class PlayerMovement : NetworkBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] private float m_MinPitch = -10f;
     [SerializeField] private float m_MaxPitch = 60f;
 
-    // 1 = instance 0 = no interpolation
+    // 1 = instant 0 = no interpolation
     [SerializeField][Range(0f, 1f)] private float m_RotationDamping = 1f;
 
     private Vector2 m_PreviousMovement;
@@ -27,7 +28,6 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!IsOwner) return;
         m_InputReader.a_PlayerMovement += HandleMove;
-
     }
 
     public override void OnNetworkDespawn()

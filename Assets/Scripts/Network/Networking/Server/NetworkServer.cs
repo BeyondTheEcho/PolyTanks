@@ -29,6 +29,8 @@ public class NetworkServer : IDisposable
         Debug.Log($"{userData.m_UserName} has joined");
 
         response.Approved = true;
+        response.Position = SpawnPoint.GetRandomSpawnPoint();
+        response.Rotation = Quaternion.identity;
         response.CreatePlayerObject = true;
     }
 
